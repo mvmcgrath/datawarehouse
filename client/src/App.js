@@ -1,7 +1,11 @@
-function App() {
+import Navigation from './components/Navigation'
+import Home from './components/Home'
+
+const App = () => {
   return (
     <div>
-      <p>Hello</p>
+      <Navigation />
+      <Home />
     </div>
   )
 }
