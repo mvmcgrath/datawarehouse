@@ -1,5 +1,16 @@
-const getAll = () => {
-  return ['hi']
+import axios from 'axios'
+const baseUrl = '/api/warehouse'
+
+const getAll = async () => {
+  const queryObject = {
+    sqlStatement: 'SELECT * FROM graduate INNER JOIN `time` ON `time`.TimeID = graduate.TimeID INNER JOIN person ON person.PersonID = graduate.PersonID INNER JOIN degree ON degree.DegreeID = graduate.DegreeID;'
+  }
+  const response = await axios.post(baseUrl, queryObject)
+  return response.data
 }
 
-export default { getAll }
+const changeCuboid = async (cuboidObject) => {
+  console.log(cuboidObject)
+}
+
+export default { getAll, changeCuboid }

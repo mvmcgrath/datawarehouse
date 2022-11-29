@@ -1,14 +1,8 @@
 const mysql = require('mysql2/promise')
-//const config = require('../utils/config')
+const config = require('../utils/config')
 
 const query = async (sqlStatement) => {
-  const connection = await mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'graduatewarehouse',
-    port: '3306'
-  })
+  const connection = await mysql.createConnection(config.DB_CONFIG)
 
   const data = await connection.execute(sqlStatement)
 

@@ -1,20 +1,24 @@
 import { useState, useEffect } from 'react'
 
 import Operations from './Operations'
-//import warehouseService from '../services/warehouse'
+import TableDisplay from './TableDisplay'
+import warehouseService from '../services/warehouse'
 
 const Home = () => {
   const [data, setData] = useState([])
 
 
   useEffect(() => {
-    setData([])
+    warehouseService.getAll().then(returnedData => {
+      setData(returnedData)
+    })
   }, [])
 
-  console.log(data)
-
   return(
-    <Operations />
+    <div>
+      <Operations />
+      <TableDisplay rows={data} />
+    </div>
   )
 }
 
