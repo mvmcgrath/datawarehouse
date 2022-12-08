@@ -13,7 +13,7 @@ const StyledContainer = styled(Container)`
   padding: 50px 0px;
 `
 
-const Operations = () => {
+const Operations = ({ handleCuboidChange }) => {
   const [rollUpTime, setRollUpTime] = useState(null)
   const [rollUpDegree, setRollUpDegree] = useState(null)
   const [rollDownTime, setRollDownTime] = useState(null)
@@ -78,10 +78,12 @@ const Operations = () => {
         sliceCollege,
         sliceDegreeName
       },
-      pivot
+      pivot: {
+        pivot
+      }
     }
 
-    console.log(newCuboid)
+    handleCuboidChange(newCuboid)
   }
 
 
@@ -105,7 +107,7 @@ const Operations = () => {
               <Form.Label>Degree Hierarchy</Form.Label>
               <Form.Select className="bg-secondary w-25" onChange={({ target }) => setRollUpDegree(target.value)}>
                 <option>None</option>
-                <option>Degree</option>
+                <option>Major</option>
                 <option>College</option>
               </Form.Select>
             </div>
@@ -128,7 +130,7 @@ const Operations = () => {
               <Form.Label>Degree Hierarchy</Form.Label>
               <Form.Select className="bg-secondary w-25" onChange={({ target }) => setRollDownDegree(target.value)}>
                 <option>None</option>
-                <option>Degree</option>
+                <option>Major</option>
                 <option>College</option>
               </Form.Select>
             </div>
